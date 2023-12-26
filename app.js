@@ -1,4 +1,6 @@
-const rootTag = ReactDOM.createRoot(document.getElementById("root"));
+import React from "react";
+import ReactDOM  from "react-dom/client";
+
 const parentTag = React.createElement(
     "div",
     {id: "parent"},
@@ -21,8 +23,9 @@ const parentTag = React.createElement(
         )
     ]
 );
+const rootTag = ReactDOM.createRoot(document.getElementById("root"));
 rootTag.render(parentTag);
 
 const venkyTag = ReactDOM.createRoot(document.getElementById("venkat"));
-const firstTag = React.createElement("h1", {}, "Replace venkat");
+const firstTag = React.createElement("h1", {}, "Replace venkatesh");
 venkyTag.render(firstTag);
