@@ -1,31 +1,43 @@
 import React from "react";
 import ReactDOM  from "react-dom/client";
 
-const parentTag = React.createElement(
-    "div",
-    {id: "parent"},
-    [
-        React.createElement(
-            "div",
-            {id: "child1"},
-            [
-                React.createElement("h1", {}, "This is child1's first sibling"),
-                React.createElement("h2", {}, "This is child1's 2nd sibling")
-            ]
-        ),
-        React.createElement(
-            "div",
-            {id: "child2"},
-            [
-                React.createElement("h1", {}, "This is child2's first sibling"),
-                React.createElement("h2", {}, "This is child2's 2nd sibling")
-            ]
-        )
-    ]
-);
-const rootTag = ReactDOM.createRoot(document.getElementById("root"));
-rootTag.render(parentTag);
+// React element
+// const heading = (
+//     <h1 className="heading" >
+//         Namaste React
+//     </h1>
+// );
+const TypeHeading = () => {
+    return <h1>Heading Typed</h1>
+};
 
-const venkyTag = ReactDOM.createRoot(document.getElementById("venkat"));
-const firstTag = React.createElement("h1", {}, "Replace venkatesh");
-venkyTag.render(firstTag);
+const Title = () => {
+    return <div className="title-container">
+        <h1 className="title-header">This is title tag</h1>
+    </div>
+};
+
+/**
+ * 
+ * 
+ * 
+ * 
+ */
+
+const HeadingComponent = () => {
+    return <div className="container">
+        <Title />
+        {100 + 300}
+        {TypeHeading()}
+        <TypeHeading/>
+        <TypeHeading></TypeHeading>
+        <h1 className="heading">This is React JSX</h1>
+    </div>
+};
+
+// const HeadingComponent2 = () => (
+//     <h1 className="heading">This is new way of returning</h1>
+// );
+
+const rootTag = ReactDOM.createRoot(document.getElementById("root"));
+rootTag.render(<HeadingComponent/>);
