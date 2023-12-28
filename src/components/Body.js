@@ -57,13 +57,9 @@ const Body = () => {
         }
     }
 
-    if (!filled) {
-        return <div>
-            <Shimmer/>
-        </div>
-    }
-
-    return (
+    return !filled ? (
+     <Shimmer/>
+     ) : (
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={handleTopRatedButton}>{buttonMessage}</button>
