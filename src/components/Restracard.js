@@ -1,18 +1,20 @@
 import { IMAGE_BASE_URL } from "../../utils/constants";
+import { useState } from "react";
 
 const Restracard = (props) => {
-    const {name, cuisine, imageUrl, avgRating, deliveryTime} = props.dataObj;
+    const {title, category, image, price, description, rating} = props.dataObj;
+
     return (
         <div className="rest-card">
             <img 
                 className="rest-logo"
                 alt="rest-logo"
-                src={IMAGE_BASE_URL + imageUrl}
+                src={image}
             />
-            <h3>{name}</h3>
-            <h4>{cuisine.join(', ')}</h4>
-            <h4>{avgRating} stars</h4>
-            <h4>{deliveryTime} minutes</h4>
+            <h3>{title}</h3>
+            <h4>{category}</h4>
+            <h4>{price}/- INR</h4>
+            <h3>{rating.rate} stars</h3>
         </div>
     );
 };

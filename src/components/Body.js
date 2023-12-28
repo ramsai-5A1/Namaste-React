@@ -13,25 +13,11 @@ const Body = () => {
 
     const fetchDataFromApi = async () => {
         const rawData = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.925144&lng=83.421274&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            "https://fakestoreapi.com/products"
         );
         const json = await rawData.json();
-        const restData = json.data.cards[3].card.card.gridElements.infoWithStyle.restaurants;
-        var filteredData = [];
-        restData.forEach((ele) => {
-            let curr = ele.info;
-            var currentObj = {
-                name: curr.name, 
-                avgRating: curr.avgRating, 
-                id: curr.id, 
-                cuisine: curr.cuisines, 
-                imageUrl: curr.cloudinaryImageId,
-                deliveryTime: 34
-            }
-            filteredData.push(currentObj);
-        })
-        setData(filteredData);
-        dataArr = filteredData;
+        setData(json);
+        dataArr = json;
     }
 
     useEffect(() => {
