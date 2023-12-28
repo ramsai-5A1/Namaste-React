@@ -7,7 +7,6 @@ let dataArr = [];
 
 const Body = () => {
     const [data, setData] = useState([]);
-    const [filled, setFilled] = useState(false);
     const [buttonMessage, setButtonMessage] = useState(buttonMessages[0]);
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
@@ -25,7 +24,6 @@ const Body = () => {
 
     useEffect(() => {
         const initData = () => {
-            setFilled(true);
         }
         setTimeout(initData, 1000);
         fetchDataFromApi();
@@ -46,7 +44,7 @@ const Body = () => {
         }
     }
 
-    return !filled ? (
+    return data.length === 0 ? (
      <Shimmer/>
      ) : (
         <div className="body">
@@ -63,6 +61,7 @@ const Body = () => {
                         let filteredDataByName = dataArr.filter((ele) => {
                             return ele.category.toLowerCase().includes(text.toLowerCase());
                         });
+                        
                         setData(filteredDataByName);
                     }}>Search</button>
                 </div>
