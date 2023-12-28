@@ -10,6 +10,9 @@ const Body = () => {
     const [filled, setFilled] = useState(false);
     const [buttonMessage, setButtonMessage] = useState(buttonMessages[0]);
     const [topRatedPresent, setTopRatedPresent] = useState(false);
+    const [text, setText] = useState("");
+
+    console.log("Body component re-rendered");
 
     const fetchDataFromApi = async () => {
         const rawData = await fetch(
@@ -31,7 +34,7 @@ const Body = () => {
     const handleTopRatedButton = () => {
         if (!topRatedPresent) {
             const filteredData = data.filter((element) => {
-                return element.avgRating >= 4.0;
+                return element.rating.rate >= 4.0;
             });
             setData(filteredData);
             setButtonMessage(buttonMessages[1]);
@@ -48,6 +51,22 @@ const Body = () => {
      ) : (
         <div className="body">
             <div className="filter">
+                <div className="search">
+                    
+                    <input type="text" className="search-box"
+                        value = {text}
+                        onChange={(e) => {
+                            setText(e.target.value);
+                        }}
+                    />
+                    <button onClick={() => {
+                        let filteredDataByName = dataArr.filter((ele) => {
+                            return ele.category.toLowerCase().includes(text.toLowerCase());
+                        });
+                        setData(filteredDataByName);
+                    }}>Search</button>
+                </div>
+
                 <button className="filter-btn" onClick={handleTopRatedButton}>{buttonMessage}</button>
             </div>
 

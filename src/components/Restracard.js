@@ -1,5 +1,3 @@
-import { IMAGE_BASE_URL } from "../../utils/constants";
-import { useState } from "react";
 
 const Restracard = (props) => {
     const {title, category, image, price, description, rating} = props.dataObj;
