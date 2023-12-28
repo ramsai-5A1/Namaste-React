@@ -1,3 +1,5 @@
+import { IMAGE_BASE_URL } from "../../utils/constants";
+
 const Restracard = (props) => {
     const {name, cuisine, imageUrl, avgRating, deliveryTime} = props.dataObj;
     return (
@@ -5,7 +7,7 @@ const Restracard = (props) => {
             <img 
                 className="rest-logo"
                 alt="rest-logo"
-                src={imageUrl}
+                src={IMAGE_BASE_URL + imageUrl}
             />
             <h3>{name}</h3>
             <h4>{cuisine.join(', ')}</h4>
