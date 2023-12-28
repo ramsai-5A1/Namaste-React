@@ -17,4 +17,25 @@
 - Error Handling
 - HTTPs
 - Tree Shaking - remove unused code
-- 
+
+
+# Food Ordering App
+
+/**
+ * 
+ * Header
+ *  - Logo
+ *  - nav items
+ * 
+ * Body
+ *  - search bar
+ *  - Resturant container
+ *      - all cards of each receipe
+ * 
+ * Footer
+ *  - copyright
+ *  - links
+ *  - address
+ *  - contact
+ * 
+ */
