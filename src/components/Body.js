@@ -1,6 +1,7 @@
 import Restracard from "./Restracard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { SWIGGY_DATA_FETCH_API_URL } from "../../utils/constants";
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
@@ -15,7 +16,7 @@ const Body = () => {
 
     const fetchDataFromApi = async () => {
         const rawData = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.925144&lng=83.421274&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            SWIGGY_DATA_FETCH_API_URL
         );
         const json = await rawData.json();
 
