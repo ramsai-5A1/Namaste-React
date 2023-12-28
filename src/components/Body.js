@@ -11,28 +11,29 @@ const Body = () => {
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
 
-    console.log("Body component re-rendered");
+    console.log("Bodyy component re-rendered");
 
     const fetchDataFromApi = async () => {
         const rawData = await fetch(
-            "https://fakestoreapi.com/products"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.925144&lng=83.421274&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const json = await rawData.json();
-        setData(json);
-        dataArr = json;
+
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
+            dataArr.push(ele.info);
+        });
+        setData(dataArr);
+        console.log("Data fetched successfully from swiggy api");
     }
 
     useEffect(() => {
-        const initData = () => {
-        }
-        setTimeout(initData, 1000);
         fetchDataFromApi();
     }, []);
 
     const handleTopRatedButton = () => {
         if (!topRatedPresent) {
-            const filteredData = data.filter((element) => {
-                return element.rating.rate >= 4.0;
+            const filteredData = dataArr.filter((element) => {
+                return element.avgRating >= 4.0;
             });
             setData(filteredData);
             setButtonMessage(buttonMessages[1]);
@@ -44,7 +45,7 @@ const Body = () => {
         }
     }
 
-    return data.length === 0 ? (
+    return data == undefined || data.length === 0 ? (
      <Shimmer/>
      ) : (
         <div className="body">
@@ -59,7 +60,14 @@ const Body = () => {
                     />
                     <button onClick={() => {
                         let filteredDataByName = dataArr.filter((ele) => {
-                            return ele.category.toLowerCase().includes(text.toLowerCase());
+                            let found = false;
+                            ele.cuisines.forEach((curr) => {
+                                if (curr.toLowerCase().includes(text.toLowerCase())) {
+                                    found = true;
+                                    return;
+                                }
+                            });
+                            return found;
                         });
                         
                         setData(filteredDataByName);

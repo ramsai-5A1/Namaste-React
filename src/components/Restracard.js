@@ -1,18 +1,20 @@
+import { IMAGE_BASE_URL } from "../../utils/constants";
 
 const Restracard = (props) => {
-    const {title, category, image, price, description, rating} = props.dataObj;
-
+    const {name, cuisines, cloudinaryImageId, sla, avgRating, areaName, costForTwo, isOpen} = props.dataObj;
     return (
         <div className="rest-card">
             <img 
                 className="rest-logo"
                 alt="rest-logo"
-                src={image}
+                src={IMAGE_BASE_URL + cloudinaryImageId}
             />
-            <h3>{title}</h3>
-            <h4>{category}</h4>
-            <h4>{price}/- INR</h4>
-            <h3>{rating.rate} stars</h3>
+            <h3>{name}</h3>
+            <h5>{areaName}</h5>
+            <h3>{costForTwo}</h3>
+            <h4>{cuisines.join(', ')}</h4>
+            <h3>{avgRating} stars</h3>
+            {isOpen ? <h4>{"Delivery within " + sla.slaString}</h4> : <h2>Closed</h2>}
         </div>
     );
 };
