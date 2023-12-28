@@ -1,5 +1,6 @@
 import Restracard from "./Restracard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
@@ -29,7 +30,6 @@ const Body = () => {
             }
             filteredData.push(currentObj);
         })
-        console.log(filteredData);
         setData(filteredData);
         dataArr = filteredData;
     }
@@ -59,7 +59,7 @@ const Body = () => {
 
     if (!filled) {
         return <div>
-            Loading...
+            <Shimmer/>
         </div>
     }
 
