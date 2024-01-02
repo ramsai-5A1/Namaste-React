@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../../utils/constants";
 
 const buttonInformation = ["Login", "Logout"];
@@ -6,6 +6,10 @@ const buttonInformation = ["Login", "Logout"];
 const Header = () => {
     const [login, setLogin] = useState(true);
     const [text, setText] = useState(buttonInformation[0]);
+
+    useEffect(() => {
+        console.log("USEEFFECT INVOKED");
+    }, []);
 
     const handleLoginButton = () => {
         if (login) {

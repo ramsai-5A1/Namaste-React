@@ -20,14 +20,18 @@ const Body = () => {
         );
         const json = await rawData.json();
 
+        console.log(json?.data?.cards);
+
         json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
             dataArr.push(ele.info);
         });
         setData(dataArr);
+        console.log(dataArr);
         console.log("Data fetched successfully from swiggy api");
     }
 
     useEffect(() => {
+        console.log("UseEffect invoked");
         fetchDataFromApi();
     }, []);
 
