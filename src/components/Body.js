@@ -1,39 +1,17 @@
 import Restracard from "./Restracard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
-import { SWIGGY_DATA_FETCH_API_URL } from "../../utils/constants";
+import useGetRestaurantsData from "../../utils/useGetRestaurantsData";
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
 
 const Body = () => {
-    const [data, setData] = useState([]);
     const [buttonMessage, setButtonMessage] = useState(buttonMessages[0]);
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
-
-
-    const fetchDataFromApi = async () => {
-        console.log(SWIGGY_DATA_FETCH_API_URL);
-        const rawData = await fetch(
-            SWIGGY_DATA_FETCH_API_URL
-        );
-        const json = await rawData.json();
-        console.log("After fetching");
-        console.log(json?.data?.cards);
-
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
-            dataArr.push(ele.info);
-        });
-        setData(dataArr);
-        console.log(dataArr);
-        console.log("Data fetched successfullyy from swiggy api");
-    }
-
-    useEffect(() => {
-        fetchDataFromApi();
-    }, []);
-
+    const data = useGetRestaurantsData();
+    
     const handleTopRatedButton = () => {
         if (!topRatedPresent) {
             const filteredData = dataArr.filter((element) => {

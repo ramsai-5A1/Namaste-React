@@ -7,8 +7,6 @@ const ResturantMenu = () => {
 
     const resId = useParams().id;
     const restInfo = useResturantMenu(resId);
-    console.log("In MENU");
-    console.log(restInfo);
 
     const { name, cuisines, costForTwoMessage } = restInfo?.cards[0]?.card?.card?.info || {};
     const {itemCards} = restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
