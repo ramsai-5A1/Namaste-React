@@ -9,7 +9,7 @@ const useGetRestaurantsData = () => {
     }, []);
 
     const fetchDataFromApi = async () => {
-        const rawData = await fetch(SWIGGY_DATA_FETCH_API_URL);
+         const rawData = await fetch(SWIGGY_DATA_FETCH_API_URL);
         const json = await rawData.json();
         console.log(json);
         let dataArr = [];
