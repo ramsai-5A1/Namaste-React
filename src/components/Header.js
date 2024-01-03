@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import useGetOnlineStatus from "../../utils/useGetOnlineStatus";
 
 const buttonInformation = ["Login", "Logout"];
+
+const greenTick = '\u2713'; 
+const redCross = '\u274C';
 
 const Header = () => {
     const [login, setLogin] = useState(true);
     const [text, setText] = useState(buttonInformation[0]);
+    const onlineStatus = useGetOnlineStatus();
 
     const handleLoginButton = () => {
         if (login) {
@@ -28,6 +33,9 @@ const Header = () => {
 
             <div className="nav-items">
                 <ul>
+                    <li>
+                        Online status: {onlineStatus ? greenTick : redCross}
+                    </li>
                     <li>
                         <Link to="/">Home</Link>
                     </li>

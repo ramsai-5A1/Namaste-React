@@ -2,6 +2,7 @@ import Restracard from "./Restracard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import useGetRestaurantsData from "../../utils/useGetRestaurantsData";
+import useGetOnlineStatus from "../../utils/useGetOnlineStatus";
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
@@ -11,6 +12,15 @@ const Body = () => {
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
     const data = useGetRestaurantsData();
+    const isOnline = useGetOnlineStatus();
+
+    if (!isOnline) {
+        return (
+            <div>
+                <h1>Looks like you're Offline!! Please check your internet connection</h1>
+            </div>
+        )
+    }
     
     const handleTopRatedButton = () => {
         if (!topRatedPresent) {
@@ -26,6 +36,8 @@ const Body = () => {
             setTopRatedPresent(false);
         }
     }
+
+
 
     return data == undefined || data.length === 0 ? (
      <Shimmer/>
