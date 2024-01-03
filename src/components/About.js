@@ -1,20 +1,18 @@
 import UserClass from "./UserClass";
-import React from "react";
+import React, { useEffect } from "react";
 
-class About extends React.Component {
+const About = () => {
 
-    constructor(props) {
-        super(props);
-        //console.log("Parent constructor");
-    }
+    useEffect(() => {
+        //console.log("UseEffect");
 
-    componentDidMount() {
-        //console.log("Parent didMount");
-    }
+        return () => {
+           // console.log("Return useEffect");
+        }
+    }, []);
 
-    render() {
-        //console.log("Parent render");
-        return <div>
+    //console.log("Render");
+    return <div>
             <h1> About us page</h1>
             <UserClass 
                 name={"First"}
@@ -22,8 +20,6 @@ class About extends React.Component {
                 contact={"venkatesh199@gmail.com"}
                 />
         </div>
-    }
-    
 };
 
 export default About;
