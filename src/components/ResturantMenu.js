@@ -1,33 +1,14 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
-import { SWIGGY_RESTURANT_MENU_API_SUFFIX_URL, SWIGGY_RESTURANT_MENU_API_PREFIX_URL } from "../../utils/constants";
+import useResturantMenu from "../../utils/useResturantMenu";
 
 
 const ResturantMenu = () => {
-    const [restInfo, setRestInfo] = useState(null);
 
     const resId = useParams().id;
-    console.log(resId);
-
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-    const fetchMenu = async () => {
-        const api = SWIGGY_RESTURANT_MENU_API_PREFIX_URL + resId + SWIGGY_RESTURANT_MENU_API_SUFFIX_URL;
-        const data = await fetch(api);
-        const json = await data.json();
-        setRestInfo(json.data);
-    }
-
-    // if (restInfo === null) {
-    //     return (
-    //         <div>
-    //             <Shimmer/>
-    //         </div>
-    //     );
-    // }
+    const restInfo = useResturantMenu(resId);
+    console.log("In MENU");
+    console.log(restInfo);
 
     const { name, cuisines, costForTwoMessage } = restInfo?.cards[0]?.card?.card?.info || {};
     const {itemCards} = restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};

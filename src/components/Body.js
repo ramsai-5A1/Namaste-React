@@ -22,7 +22,7 @@ const Body = () => {
         console.log("After fetching");
         console.log(json?.data?.cards);
 
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
             dataArr.push(ele.info);
         });
         setData(dataArr);
