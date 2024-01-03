@@ -8,10 +8,6 @@ const Header = () => {
     const [login, setLogin] = useState(true);
     const [text, setText] = useState(buttonInformation[0]);
 
-    useEffect(() => {
-        console.log("USEEFFECT INVOKED");
-    }, []);
-
     const handleLoginButton = () => {
         if (login) {
             setText(buttonInformation[1]);
