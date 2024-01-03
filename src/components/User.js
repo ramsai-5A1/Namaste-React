@@ -1,10 +1,16 @@
+import { useState } from "react";
 
-const User = () => {
+const User = ({name, location, contact}) => {
+    const [count, setCount] = useState(0);
+    const [count2, setCount2] = useState(2);
+
     return (
         <div className="user-card">
-            <h2>Name: Ram sai</h2>
-            <h3>Location: Vizag</h3>
-            <h4>Contact: ramsai1@gmail.com</h4>
+            <h1>Count: {count}</h1>
+            <h1>Count2: {count2}</h1>
+            <h2>Name: {name}</h2>
+            <h3>Location: {location}</h3>
+            <h4>Contact: {contact}</h4>
         </div>
     )
 }
