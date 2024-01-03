@@ -12,26 +12,25 @@ const Body = () => {
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
 
-    console.log("Bodyy component re-rendered");
 
     const fetchDataFromApi = async () => {
+        console.log(SWIGGY_DATA_FETCH_API_URL);
         const rawData = await fetch(
             SWIGGY_DATA_FETCH_API_URL
         );
         const json = await rawData.json();
-
+        console.log("After fetching");
         console.log(json?.data?.cards);
 
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants.forEach((ele) => {
             dataArr.push(ele.info);
         });
         setData(dataArr);
         console.log(dataArr);
-        console.log("Data fetched successfully from swiggy api");
+        console.log("Data fetched successfullyy from swiggy api");
     }
 
     useEffect(() => {
-        console.log("UseEffect invoked");
         fetchDataFromApi();
     }, []);
 
@@ -83,6 +82,7 @@ const Body = () => {
             </div>
 
             <div className="rest-container">
+                
                 {data.map(resturant => (
                     <Restracard key={resturant.id} dataObj={resturant}/>
                 ))}

@@ -1,7 +1,9 @@
 import { IMAGE_BASE_URL } from "../../utils/constants";
+import { Link } from "react-router-dom";
 
 const Restracard = (props) => {
-    const {name, cuisines, cloudinaryImageId, sla, avgRating, areaName, costForTwo, isOpen} = props.dataObj;
+    const {id, name, cuisines, cloudinaryImageId, sla, avgRating, areaName, costForTwo, isOpen} = props.dataObj;
+    
     return (
         <div className="rest-card">
             <img 
@@ -15,6 +17,7 @@ const Restracard = (props) => {
             <h4>{cuisines.join(', ')}</h4>
             <h3>{avgRating} stars</h3>
             {isOpen ? <h4>{"Delivery within " + sla.slaString}</h4> : <h2>Closed</h2>}
+            <Link to={"/resturants/" + id}>Explore</Link>
         </div>
     );
 };

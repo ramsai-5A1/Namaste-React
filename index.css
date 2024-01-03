@@ -28,6 +28,7 @@
     width: 200px;
     padding: 5px;
     margin: 5px;
+    cursor: pointer;
 }
 
 .rest-card:hover {
@@ -72,5 +73,10 @@
 }
 
 .search {
+    padding: 10px;
+}
+
+.user-card {
+    border: 1px solid black;
     padding: 10px;
 }
