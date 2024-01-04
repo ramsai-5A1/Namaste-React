@@ -11,7 +11,8 @@ const Body = () => {
     const [buttonMessage, setButtonMessage] = useState(buttonMessages[0]);
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
-    const data = useGetRestaurantsData();
+    dataArr = useGetRestaurantsData();
+    const data = dataArr;
     const isOnline = useGetOnlineStatus();
 
     if (!isOnline) {
@@ -42,17 +43,16 @@ const Body = () => {
     return data == undefined || data.length === 0 ? (
      <Shimmer/>
      ) : (
-        <div className="body">
-            <div className="filter">
-                <div className="search">
-                    
-                    <input type="text" className="search-box"
+        <div className="bg-gray-100">
+            <div className="flex">
+                <div className="p-4 m-4">
+                    <input type="text" className="border border-solid border-black"
                         value = {text}
                         onChange={(e) => {
                             setText(e.target.value);
                         }}
                     />
-                    <button onClick={() => {
+                    <button className="px-2 py-1 m-2 bg-green-200 rounded-lg" onClick={() => {
                         let filteredDataByName = dataArr.filter((ele) => {
                             let found = false;
                             ele.cuisines.forEach((curr) => {
@@ -67,11 +67,12 @@ const Body = () => {
                         setData(filteredDataByName);
                     }}>Search</button>
                 </div>
-
-                <button className="filter-btn" onClick={handleTopRatedButton}>{buttonMessage}</button>
+                <div className="p-4 m-4 flex items-center">
+                    <button className="px-4 py-2 bg-green-200 rounded-lg" onClick={handleTopRatedButton}>{buttonMessage}</button>
+                </div>
             </div>
 
-            <div className="rest-container">
+            <div className="flex flex-wrap">
                 
                 {data.map(resturant => (
                     <Restracard key={resturant.id} dataObj={resturant}/>

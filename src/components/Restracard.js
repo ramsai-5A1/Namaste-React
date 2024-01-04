@@ -5,13 +5,16 @@ const Restracard = (props) => {
     const {id, name, cuisines, cloudinaryImageId, sla, avgRating, areaName, costForTwo, isOpen} = props.dataObj;
     
     return (
-        <div className="rest-card">
+        <div className="m-4 p-4 rounded-lg shadow-lg w-[250px]  bg-white transition-transform transform  hover:scale-110 hover:cursor-pointer"
+            onClick={() => {
+                alert("Handle opening logic here");
+            }}>
             <img 
-                className="rest-logo"
+                className="w-[300px] h-[150px] rounded-lg"
                 alt="rest-logo"
                 src={IMAGE_BASE_URL + cloudinaryImageId}
             />
-            <h3>{name}</h3>
+            <h3 className="font-bold py-2 text-lg">{name}</h3>
             <h5>{areaName}</h5>
             <h3>{costForTwo}</h3>
             <h4>{cuisines.join(', ')}</h4>

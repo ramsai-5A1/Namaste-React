@@ -23,32 +23,32 @@ const Header = () => {
     }
 
     return (
-        <div className="header">
+        <div className="flex justify-between bg-pink-200 shadow-lg m-1 h-[150px] sm:bg-yellow-200">
             <div className="logo-container">
                 <img
-                    className="logo" 
+                    className="w-50 h-[150px]" 
                     src={LOGO_URL}
                 />
             </div>
 
-            <div className="nav-items">
-                <ul>
-                    <li>
+            <div className="flex items-center">
+                <ul className="flex p-4 m-4">
+                    <li className="px-4">
                         Online status: {onlineStatus ? greenTick : redCross}
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/about">About</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/contactus">Contact</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/grocery">Groceries</Link>
                     </li>
-                    <li>
+                    <li className="px-4">
                         <Link to="/">Cart</Link>
                     </li> 
                     
