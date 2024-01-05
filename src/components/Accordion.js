@@ -21,12 +21,13 @@ const Accordion = ({name, items}) => {
 
     return (
         <div className="">
-            <div className="p-10 hover:cursor-pointer h-10 m-1 bg-green-300 rounded-sm" onClick={() => toggleFlag()}>
-                <span>{name}</span>
+            <div className="flex justify-between w-6/12 mx-auto p-4 my-4 shadow-lg hover:cursor-pointer  bg-green-300 rounded-sm" onClick={() => toggleFlag()}>
+                <span className="font-bold text-lg">{name}{" ("}{items.length}{")"}</span>
+                <span>⬇️</span>
             </div>
 
             {droppedDown && (
-                <div className="bg-green-100">
+                <div className="w-6/12 mx-auto bg-green-100">
                     <ul>
                         {items.map((value) => (
                             <li>{value.item.name} - {"Rs"} {value.item.price > 0 ? value.item.price : value.item.min_price}</li>

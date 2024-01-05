@@ -12,7 +12,7 @@ const RestaurantCategory = (props) => {
     }
 
     return (
-        <div className="p-10 ">
+        <div className="">
             <Accordion name={name} items={items}/>
         </div>
     )
