@@ -2,7 +2,7 @@ import React, {lazy, Suspense} from "react";
 import ReactDOM  from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter as Router, Route } from "react-router-dom";
 //import About from "./components/About";
 import Contactus from "./components/Contactus";
 import Error from "./components/Error";
@@ -20,6 +20,15 @@ const AppLayout = () => {
         </div>
     );
 };
+
+// const App = () => {
+//     return (
+//         <Router>
+//             <Route exact path="/restaurants" component={Contactus} />
+//             <Route path="/restaurants/:param" component={Contactus} />
+//         </Router>
+//       );
+// }
 
 const appRouter = createBrowserRouter([
     {
@@ -44,7 +53,7 @@ const appRouter = createBrowserRouter([
                 element: <Contactus/>
             },
             {
-                path: "/resturants/:id",
+                path: "/resturants",
                 element: <ResturantMenu/>
             },
             {

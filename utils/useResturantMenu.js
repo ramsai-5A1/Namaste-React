@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SWIGGY_RESTURANT_MENU_API_PREFIX_URL, SWIGGY_RESTURANT_MENU_API_SUFFIX_URL } from "./constants";
+import { SWIGGY_RESTURANT_MENU_API_PREFIX_URL, SWIGGY_RESTURANT_MENU_API_SUFFIX_UR, ZOMATO_RESTURANT_WISE_PREFIX_URL } from "./constants";
 
 const useResturantMenu = (resId) => {
 
@@ -10,10 +10,11 @@ const useResturantMenu = (resId) => {
     }, []);
 
     const fetchDataFromApi = async () => {
-        const api = SWIGGY_RESTURANT_MENU_API_PREFIX_URL + resId + SWIGGY_RESTURANT_MENU_API_SUFFIX_URL;
+        const api = ZOMATO_RESTURANT_WISE_PREFIX_URL + resId;
         const data = await fetch(api);
         const json = await data.json();
-        setResInfo(json.data);
+        console.log(json);
+        setResInfo(json);
     }
 
     return resInfo;

@@ -1,4 +1,4 @@
-import Restracard from "./Restracard";
+import Restracard, {withPromotedLabel} from "./Restracard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import useGetRestaurantsData from "../../utils/useGetRestaurantsData";
@@ -14,6 +14,8 @@ const Body = () => {
     dataArr = useGetRestaurantsData();
     const data = dataArr;
     const isOnline = useGetOnlineStatus();
+
+    const ResturantCardPromoted = withPromotedLabel(Restracard);
 
     if (!isOnline) {
         return (
@@ -75,7 +77,11 @@ const Body = () => {
             <div className="flex flex-wrap">
                 
                 {data.map(resturant => (
-                    <Restracard key={resturant.id} dataObj={resturant}/>
+                    resturant.isPromoted ? (
+                        <ResturantCardPromoted key={resturant.id} dataObj={resturant}/>
+                        ) : (
+                        <Restracard key={resturant.id} dataObj={resturant}/>
+                        )
                 ))}
                 
             </div>
