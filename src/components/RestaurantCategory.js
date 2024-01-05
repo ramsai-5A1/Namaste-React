@@ -1,3 +1,4 @@
+import Accordion from "./Accordion";
 
 const RestaurantCategory = (props) => {
     const {obj} = props;
@@ -10,20 +11,12 @@ const RestaurantCategory = (props) => {
         items = [];
     }
 
-    //const {name} = menu?.menu?.name;
-    //const {category} = menu?.menu?.categories[0];
-    //console.log(name);
     return (
-        <div className="p-10">
-            <h1 className="underline">{name}</h1>
-            <ul>
-                {items.map((value) => (
-                    <li>{value.item.name} - {"Rs"} {value.item.price > 0 ? value.item.price : value.item.min_price}</li>
-                ))}
-            </ul>
-            
+        <div className="p-10 ">
+            <Accordion name={name} items={items}/>
         </div>
     )
 };
+
 
 export default RestaurantCategory;
