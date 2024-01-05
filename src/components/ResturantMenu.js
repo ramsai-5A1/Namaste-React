@@ -2,7 +2,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useResturantMenu from "../../utils/useResturantMenu";
 import { useLocation } from "react-router";
-
+import RestaurantCategory from "./RestaurantCategory";
 
 const ResturantMenu = () => {
     const location = useLocation();
@@ -11,7 +11,7 @@ const ResturantMenu = () => {
 
     if (restInfo === null || restInfo === undefined || restInfo.length === 0) {
         return (
-            <div>
+            <div className="text-center font-bold">
                 <h1>Loading...</h1>
                 <Shimmer/>
             </div>
@@ -35,12 +35,13 @@ const ResturantMenu = () => {
             <Shimmer/>
         </div>
     ) : (
-        <div className="menu-container">
-            <h1 className="font-bold underline">{page_info.ogTitle}</h1>
+        <div className="text-center">
+            <h1 className="font-bold my-8 text-2xl">{page_info.ogTitle}</h1>
             <h1 className="font-bold">Menu</h1>
+            <RestaurantCategory/>
             <ul>
                 {menus.map((value) => (
-                    <li key={value.menu.id}>{value.menu.name}</li>
+                    <RestaurantCategory key={value.id} obj={value}/>
                 ))}
             </ul>
             {/* <h1>{name}</h1>
