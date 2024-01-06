@@ -56,7 +56,7 @@ const Header = () => {
                         <Link to="/grocery">Groceries</Link>
                     </li>
                     <li className="px-4 bg-green-200 rounded-lg font-bold">
-                        <Link to="/">Cart ({cartItems.length} items)</Link>
+                        <Link to="/cart">Cart ({cartItems.length} items)</Link>
                     </li> 
                     
                     <button className="bg-green-200" onClick={handleLoginButton}>{text}</button>
