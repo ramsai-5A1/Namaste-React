@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM  from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,16 +8,39 @@ import Contactus from "./components/Contactus";
 import Error from "./components/Error";
 import ResturantMenu from "./components/ResturantMenu";
 //import Grocery from "./components/Grocery";
+import UserContext from "../utils/UserContext";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+
+    const [userName, setUserName] = useState("Dummy");
+
+    useEffect(() => {
+        const fetchAuthInfo = async () => {
+            // Make an api call to fetch userName
+            // const data = await fetch("");
+            // const info = await data.json;
+            const info = {
+                userName: "Ram sai Manapuram"
+            }
+            setTimeout(() => {
+                setUserName(info.userName);
+            }, 2000);
+            
+        };
+
+        fetchAuthInfo();
+    }, []);
+
     return (
-        <div className="app">
-            <Header/>
-            <Outlet/>
-        </div>
+        <UserContext.Provider value={{loggedInUser: userName}}>
+            <div className="app">
+                <Header/>
+                <Outlet/>
+            </div>
+        </UserContext.Provider>
     );
 };
 

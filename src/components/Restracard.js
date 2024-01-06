@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { IMAGE_BASE_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import UserContext from "../../utils/UserContext";
 
 const Restracard = (props) => {
     const  { name, image, cuisine, costText, locality, rating } = props.dataObj.info;
     const {order, cardAction} = props.dataObj;
     const cuisines = cuisine.map((curr) => curr.name);
     const url = cardAction.clickUrl.slice(1);
+    const {loggedInUser} = useContext(UserContext);
    
     return (
         <div className="m-4 p-4 rounded-lg shadow-lg w-[250px]  bg-white transition-transform transform  hover:scale-110 hover:cursor-pointer"
@@ -20,6 +23,7 @@ const Restracard = (props) => {
             <h3>{rating.aggregate_rating} stars</h3>
             <h3>{costText.text}</h3>
             <h4>{locality.name}</h4>
+            <h4>User: {loggedInUser}</h4>
             {order.isServiceable ? <h4>{"Delivery within " + order.deliveryTime}</h4> : <h2 className="font-bold">Closed</h2>}
             <Link to={"/resturants?" + url}>Explore</Link> 
         </div>
