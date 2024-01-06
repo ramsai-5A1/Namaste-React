@@ -1,8 +1,9 @@
 import Restracard, {withPromotedLabel} from "./Restracard";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Shimmer from "./Shimmer";
 import useGetRestaurantsData from "../../utils/useGetRestaurantsData";
 import useGetOnlineStatus from "../../utils/useGetOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
@@ -16,7 +17,7 @@ const Body = () => {
     const isOnline = useGetOnlineStatus();
 
     const ResturantCardPromoted = withPromotedLabel(Restracard);
-    const [userNameText, setUserNameText] = useState("");
+    const {loggedInUser, setUserName} = useContext(UserContext);
 
     if (!isOnline) {
         return (
@@ -49,7 +50,7 @@ const Body = () => {
         <div id={text} className="bg-green-100">
             <div className="flex">
                 <div className="p-4 m-4">
-                    <input type="text" className="border border-solid border-black"
+                    <input type="text" className="p-2 border border-solid border-black"
                         value = {text}
                         onChange={(e) => {
                             setText(e.target.value);
@@ -74,12 +75,14 @@ const Body = () => {
                     <button className="px-4 py-2 bg-green-300 rounded-lg" onClick={handleTopRatedButton}>{buttonMessage}</button>
                 </div>
                 <div className="p-4 m-4">
-                    <input type="text" className="border border-black w-50 h-8" value={userNameText} onChange={(data) => {
-                        setUserNameText(data.target.value)}}></input>
-                    <button className="px-2 py-1 m-2 w-60 bg-green-300 h-8 rounded-lg" onClick={() => {
-                        console.log(userNameText);
-
-                    }}>Change UserName</button>
+                    <input type="text" className="p-2 border border-black w-50 h-8" 
+                        value={loggedInUser} 
+                        onChange={(data) => {
+                            setUserName(data.target.value)}}>
+                    </input>
+                    {/* <button className="px-2 py-1 m-2 w-60 bg-green-300 h-8 rounded-lg" onClick={() => {
+                        setUserName(userNameText);
+                    }}>Change UserName</button> */}
                 </div>
             </div>
 
