@@ -16,7 +16,9 @@ const Header = () => {
     const onlineStatus = useGetOnlineStatus();
     const {loggedInUser} = useContext(UserContext);
     const cartItems = useSelector((store) => store.cart.items);
+    const purchasedHistoryProducts = useSelector((store) => store.purchasedHistory.products);
     console.log(cartItems);
+    console.log(purchasedHistoryProducts);
 
     const handleLoginButton = () => {
         if (login) {

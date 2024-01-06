@@ -1,9 +1,11 @@
 const { configureStore } = require("@reduxjs/toolkit");
-import cartReducer from "./CartSlice"
+import cartReducer from "./CartSlice";
+import purchasedHistoryReducer from "./purchasedHistorySlice";
 
 const AppStore = configureStore({
     reducer: {
-        cart: cartReducer
+        cart: cartReducer,
+        purchasedHistory: purchasedHistoryReducer
     }
 });
 
