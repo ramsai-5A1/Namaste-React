@@ -34,11 +34,11 @@ const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
     )
 }
 
-const ItemList = ({items}) => {
+export const ItemList = ({items}) => {
     const dispatch = useDispatch();
 
     const addItemToCart = (value) => {
-        dispatch(addItem(value.item.name));
+        dispatch(addItem(value));
          //const cartItems = useSelector(store => store.cart.items);
         // console.log(cartItems);
     }
