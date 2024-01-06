@@ -21,7 +21,6 @@ const ResturantMenu = () => {
     
     const {page_info, page_data} = restInfo;
     const {menus} = page_data?.order?.menuList;
-    console.log(menus);
 
     return (restInfo === null || restInfo === undefined || restInfo.length === 0) ? (
         <div>

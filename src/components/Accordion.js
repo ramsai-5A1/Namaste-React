@@ -1,8 +1,8 @@
 import { useState } from "react";
-let opened = false;
+
 
 const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
-    
+    let opened = false;
     if (name === undefined || items.length === 0) {
         return (
             <div>
@@ -14,7 +14,6 @@ const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
 
     const toggleFlag = () => {
         //setDroppedDown(!droppedDown);
-        console.log(opened);
         if (!opened) {
             setShowIndex(index);
         } else {

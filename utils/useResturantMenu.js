@@ -13,8 +13,6 @@ const useResturantMenu = (resId) => {
         const api = ZOMATO_RESTURANT_WISE_PREFIX_URL + resId;
         const data = await fetch(api);
         const json = await data.json();
-        console.log("From fetchApi");
-        console.log(json);
         setResInfo(json);
     }
 

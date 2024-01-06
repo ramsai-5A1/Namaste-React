@@ -4,8 +4,6 @@ const RestaurantCategory = (props) => {
     const {obj, droppedDown, setShowIndex, index} = props;
     const {name} = obj?.menu || {};
     let {items} = obj?.menu?.categories[0]?.category || {};
-    console.log("Items");
-    console.log(items);
 
     if (items == undefined) {
         items = [];
