@@ -1,7 +1,8 @@
 import { useState } from "react";
+let opened = false;
 
-const Accordion = ({name, items}) => {
-
+const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
+    
     if (name === undefined || items.length === 0) {
         return (
             <div>
@@ -9,18 +10,21 @@ const Accordion = ({name, items}) => {
             </div>
         )
     }
-    const [droppedDown, setDroppedDown] = useState(false);
+    //const [droppedDown, setDroppedDown] = useState(false);
 
     const toggleFlag = () => {
-        if (droppedDown) {
-            setDroppedDown(false);
+        //setDroppedDown(!droppedDown);
+        console.log(opened);
+        if (!opened) {
+            setShowIndex(index);
         } else {
-            setDroppedDown(true);
+            setShowIndex(-1);
         }
+        opened = !opened;
     }
 
     return (
-        <div className="">
+        <div id={name} className="">
             <div className="border hover:bg-green-400  flex justify-between w-6/12 mx-auto p-4 my-4 shadow-lg hover:cursor-pointer  bg-green-300 rounded-sm" onClick={() => toggleFlag()}>
                 <span className="font-bold text-lg">{name} ({items.length})</span>
                 <span>⬇️</span>
@@ -38,10 +42,10 @@ const ItemList = ({items}) => {
             {items.map((value) => {
                 return (
                     <div id={value.item.id} className="hover:bg-green-300 flex flex-row-reverse justify-between border border-b-4 border-gray-400 text-left">
-                        <div className="w-3/12 h-auto flex flex-col justify-between rounded-2xl p-2">
-                            <img className="m-1" src={value.item.item_image_url}/>
-                            <div className=" hover:bg-gray-200 hover:text-black rounded-lg p-1 w-16 h-8 bg-black text-white text-center">
-                                <button onClick={() => alert("Added to the cart")} className="">Add</button>
+                        <div className="w-3/12 h-auto flex flex-col-reverse justify-between rounded-2xl p-2">
+                            <img className="m-1 shadow-lg" src={value.item.item_image_url}/>
+                            <div className="mx-12 shadow-lg absolute hover:bg-black hover:text-white rounded-lg p-1 w-16 h-8 bg-white text-black text-center">
+                                <button onClick={() => alert("Added to the cart")} className="">Add +</button>
                             </div>
                         </div>
 

@@ -45,7 +45,7 @@ const Body = () => {
     return data == undefined || data.length === 0 ? (
      <Shimmer/>
      ) : (
-        <div className="bg-green-100">
+        <div id={text} className="bg-green-100">
             <div className="flex">
                 <div className="p-4 m-4">
                     <input type="text" className="border border-solid border-black"
