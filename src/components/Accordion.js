@@ -1,4 +1,5 @@
-import { useState } from "react";
+import {addItem} from "../../utils/CartSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
@@ -10,10 +11,8 @@ const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
             </div>
         )
     }
-    //const [droppedDown, setDroppedDown] = useState(false);
 
     const toggleFlag = () => {
-        //setDroppedDown(!droppedDown);
         if (!opened) {
             setShowIndex(index);
         } else {
@@ -36,6 +35,14 @@ const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
 }
 
 const ItemList = ({items}) => {
+    const dispatch = useDispatch();
+
+    const addItemToCart = (value) => {
+        dispatch(addItem(value.item.name));
+         //const cartItems = useSelector(store => store.cart.items);
+        // console.log(cartItems);
+    }
+
     return (
         <div className="bg-green-100 w-6/12 mx-auto">
             {items.map((value) => {
@@ -44,7 +51,7 @@ const ItemList = ({items}) => {
                         <div className="w-3/12 h-auto flex flex-col-reverse justify-between rounded-2xl p-2">
                             <img className="m-1 shadow-lg" src={value.item.item_image_url}/>
                             <div className="mx-12 shadow-lg absolute hover:bg-black hover:text-white rounded-lg p-1 w-16 h-8 bg-white text-black text-center">
-                                <button onClick={() => alert("Added to the cart")} className="">Add +</button>
+                                <button onClick={() => addItemToCart(value)} className="">Add +</button>
                             </div>
                         </div>
 

@@ -30,7 +30,6 @@ const ResturantMenu = () => {
         <div className="text-center">
             <h1 className="font-bold my-8 text-2xl">{page_info.ogTitle}</h1>
             <h1 className="font-bold">Menu</h1>
-            <RestaurantCategory/>
             <ul>
                 {menus.map((value, index) => (
                     <RestaurantCategory 
