@@ -1,6 +1,9 @@
+import { ToastContainer, toast } from "react-toastify";
 import {addItem} from "../../utils/CartSlice";
 import { useDispatch, useSelector } from 'react-redux';
+import "react-toastify/dist/ReactToastify.css";
 
+// toast.configure();
 
 const Accordion = ({name, items, droppedDown, setShowIndex, index}) => {
     let opened = false;
@@ -39,6 +42,7 @@ export const ItemList = ({items}) => {
 
     const addItemToCart = (value) => {
         dispatch(addItem(value));
+        toast(value.item.name + " added to cart");
          //const cartItems = useSelector(store => store.cart.items);
         // console.log(cartItems);
     }
@@ -52,6 +56,7 @@ export const ItemList = ({items}) => {
                             <img className="m-1 shadow-lg" src={value.item.item_image_url}/>
                             <div className="mx-12 shadow-lg absolute hover:bg-black hover:text-white rounded-lg p-1 w-16 h-8 bg-white text-black text-center">
                                 <button onClick={() => addItemToCart(value)} className="">Add +</button>
+                                <ToastContainer />
                             </div>
                         </div>
 
