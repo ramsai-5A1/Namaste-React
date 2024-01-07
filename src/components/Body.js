@@ -47,7 +47,7 @@ const Body = () => {
     return data == undefined || data.length === 0 ? (
      <Shimmer/>
      ) : (
-        <div id={text} className="bg-green-100">
+        <div id={text} className="">
             <div className="flex">
                 <div className="p-4 m-4">
                     <input type="text" className="p-2 border border-solid border-black"
@@ -56,7 +56,7 @@ const Body = () => {
                             setText(e.target.value);
                         }}
                     />
-                    <button className="px-2 py-1 m-2 bg-green-300 rounded-lg" onClick={() => {
+                    <button className="px-2 py-1 m-2 bg-black text-white hover:bg-gray-500 hover:text-black rounded-lg" onClick={() => {
                         let filteredDataByName = dataArr.filter((ele) => {
                             let found = false;
                             ele.cuisines.forEach((curr) => {
@@ -72,7 +72,7 @@ const Body = () => {
                     }}>Search</button>
                 </div>
                 <div className="p-4 m-4 flex items-center">
-                    <button className="px-4 py-2 bg-green-300 rounded-lg" onClick={handleTopRatedButton}>{buttonMessage}</button>
+                    <button className="px-4 py-2 bg-black text-white hover:bg-gray-500 hover:text-black rounded-lg" onClick={handleTopRatedButton}>{buttonMessage}</button>
                 </div>
                 <div className="p-4 m-4">
                     <input type="text" className="p-2 border border-black w-50 h-8" 

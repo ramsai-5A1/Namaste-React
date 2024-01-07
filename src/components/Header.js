@@ -30,7 +30,7 @@ const Header = () => {
     }
 
     return (
-        <div className="flex justify-between bg-pink-200 shadow-lg m-1 h-[150px] sm:bg-green-300">
+        <div className="flex justify-between  shadow-lg m-1 h-[150px] bg-gray-200">
             <div className="logo-container">
                 <img
                     className="w-50 h-[150px]" 
@@ -40,26 +40,26 @@ const Header = () => {
 
             <div className="flex items-center">
                 <ul className="flex p-4 m-4 ">
-                    <li className="px-4 bg-green-200 rounded-lg">
+                    <li className="px-4 bg-black text-white rounded-lg">
                         Online status: {onlineStatus ? greenTick : redCross}
                     </li>
-                    <li className="px-4 bg-green-200 rounded-lg">
+                    <li className="px-4 bg-white rounded-lg hover:bg-gray-500 hover:text-black">
                         <Link to="/">Home</Link>
                     </li>
-                    <li className="px-4 bg-green-200 rounded-lg">
+                    <li className="px-4 bg-white rounded-lg hover:bg-gray-500 hover:text-black">
                         <Link to="/about">About</Link>
                     </li>
-                    <li className="px-4 bg-green-200 rounded-lg">
+                    <li className="px-4 bg-white rounded-lg hover:bg-gray-500 hover:text-black">
                         <Link to="/contactus">Contact</Link>
                     </li>
-                    <li className="px-4 bg-green-200 rounded-lg">
+                    <li className="px-4 bg-white rounded-lg hover:bg-gray-500 hover:text-black">
                         <Link to="/grocery">Groceries</Link>
                     </li>
-                    <li className="px-4 bg-green-200 rounded-lg font-bold">
+                    <li className="px-4 bg-white rounded-lg font-bold hover:bg-gray-500 hover:text-black">
                         <Link to="/cart">Cart ({cartItems.length} items)</Link>
                     </li> 
                     
-                    <button className="bg-green-200" onClick={handleLoginButton}>{text}</button>
+                    <button className="bg-black text-white hover:bg-gray-500 hover:text-black rounded-lg px-4" onClick={handleLoginButton}>{text}</button>
                     <li className="font-bold">
                         {loggedInUser}
                     </li>

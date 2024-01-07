@@ -11,7 +11,7 @@ const Restracard = (props) => {
     const {loggedInUser} = useContext(UserContext);
    
     return (
-        <div className="m-4 p-4 rounded-lg shadow-lg w-[250px]  bg-white transition-transform transform  hover:scale-110 hover:cursor-pointer"
+        <div className="m-4 p-4 rounded-lg shadow-lg w-[250px]  bg-gray-200 transition-transform transform  hover:scale-110 hover:cursor-pointer"
             >
             <img 
                 className="w-[300px] h-[150px] rounded-lg"
