@@ -1,5 +1,5 @@
 import Restracard, {withPromotedLabel} from "./Restracard";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import useGetRestaurantsData from "../../utils/useGetRestaurantsData";
 import useGetOnlineStatus from "../../utils/useGetOnlineStatus";
@@ -13,11 +13,17 @@ const Body = () => {
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
     dataArr = useGetRestaurantsData();
-    const data = dataArr;
+    const [data, setData] = useState(dataArr);
     const isOnline = useGetOnlineStatus();
 
     const ResturantCardPromoted = withPromotedLabel(Restracard);
     const {loggedInUser, setUserName} = useContext(UserContext);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setData(dataArr);
+        }, 1000);
+    },[]);
 
     if (!isOnline) {
         return (
@@ -29,8 +35,9 @@ const Body = () => {
     
     const handleTopRatedButton = () => {
         if (!topRatedPresent) {
-            const filteredData = dataArr.filter((element) => {
-                return element.avgRating >= 4.0;
+            const filteredData = data.filter((element) => {
+                let rating = parseFloat(element.info.rating.aggregate_rating);
+                return rating >= 4.0;
             });
             setData(filteredData);
             setButtonMessage(buttonMessages[1]);
@@ -57,17 +64,18 @@ const Body = () => {
                         }}
                     />
                     <button className="px-2 py-1 m-2 bg-black text-white hover:bg-gray-500 hover:text-black rounded-lg" onClick={() => {
-                        let filteredDataByName = dataArr.filter((ele) => {
+                        setButtonMessage(buttonMessages[0]);
+                        setTopRatedPresent(false);
+                        let filteredDataByName = dataArr.filter((resturant) => {
                             let found = false;
-                            ele.cuisines.forEach((curr) => {
-                                if (curr.toLowerCase().includes(text.toLowerCase())) {
+                            resturant.info.cuisine.forEach((curr) => {
+                                if (curr.name.toLowerCase().includes(text.toLowerCase())) {
                                     found = true;
                                     return;
                                 }
                             });
                             return found;
                         });
-                        
                         setData(filteredDataByName);
                     }}>Search</button>
                 </div>
