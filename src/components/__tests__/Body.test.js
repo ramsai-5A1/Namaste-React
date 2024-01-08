@@ -21,6 +21,12 @@ describe("Body Component testing", () => {
             </BrowserRouter>
          ));
 
+        // jest.useFakeTimers();
+        // const waitPromise = new Promise((resolve) => {
+        //     setTimeout(resolve, 1000);
+        // });
+        // await waitPromise;
+
         //Checking for all restra cards before clicking on search button
         const cardsLoadedBeforeSearch = screen.getAllByTestId("restraCard");
         expect(cardsLoadedBeforeSearch.length).toBe(23);
@@ -77,6 +83,13 @@ describe("Body Component testing", () => {
             </BrowserRouter>
         ));
 
+        // jest.useFakeTimers();
+        // const waitPromise = new Promise((resolve) => {
+        //     setTimeout(resolve, 1000);
+        // });
+        // await waitPromise;
+
+        
         const cardsBeforeSearching = screen.getAllByTestId("restraCard");
         expect(cardsBeforeSearching.length).toBe(23);
 

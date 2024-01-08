@@ -16,7 +16,7 @@ const Body = () => {
     const [text, setText] = useState("");
     //dataArr = useGetRestaurantsData();
     dataArr = dataFromMock;
-    const [data, setData] = useState(dataFromMock);
+    const [data, setData] = useState(dataArr);
     //console.log(data);
     const isOnline = useGetOnlineStatus();
 
