@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 import useGetRestaurantsData from "../../utils/useGetRestaurantsData";
 import useGetOnlineStatus from "../../utils/useGetOnlineStatus";
 import UserContext from "../../utils/UserContext";
+import { LOCAL_HOST_BACKEND_URL } from "../../utils/constants";
+import { dataFromMock } from "./mocks/RestraListMock";
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
@@ -12,17 +14,35 @@ const Body = () => {
     const [buttonMessage, setButtonMessage] = useState(buttonMessages[0]);
     const [topRatedPresent, setTopRatedPresent] = useState(false);
     const [text, setText] = useState("");
-    dataArr = useGetRestaurantsData();
-    const [data, setData] = useState(dataArr);
+    //dataArr = useGetRestaurantsData();
+    dataArr = dataFromMock;
+    const [data, setData] = useState(dataFromMock);
+    //console.log(data);
     const isOnline = useGetOnlineStatus();
 
     const ResturantCardPromoted = withPromotedLabel(Restracard);
     const {loggedInUser, setUserName} = useContext(UserContext);
 
-    useEffect(() => {
-        setTimeout(() => {
+    const fetchDataFromApi = async () => {
+        try {
+            const rawData = await fetch(LOCAL_HOST_BACKEND_URL);
+            const json = await rawData.json();
+            
+            dataArr = [];
+            json?.sections?.SECTION_SEARCH_RESULT.forEach((ele) => {
+                dataArr.push(ele);
+            });
             setData(dataArr);
-        }, 1000);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        //fetchDataFromApi();
+        // setTimeout(() => {
+        //     setData(dataArr);
+        // }, 1000);
     },[]);
 
     if (!isOnline) {
@@ -49,15 +69,11 @@ const Body = () => {
         }
     }
 
-
-
-    return data == undefined || data.length === 0 ? (
-     <Shimmer/>
-     ) : (
+    return (
         <div id={text} className="">
             <div className="flex">
                 <div className="p-4 m-4">
-                    <input type="text" className="p-2 border border-solid border-black"
+                    <input data-testid="searchInput" type="text" className="p-2 border border-solid border-black"
                         value = {text}
                         onChange={(e) => {
                             setText(e.target.value);
@@ -88,9 +104,6 @@ const Body = () => {
                         onChange={(data) => {
                             setUserName(data.target.value)}}>
                     </input>
-                    {/* <button className="px-2 py-1 m-2 w-60 bg-green-300 h-8 rounded-lg" onClick={() => {
-                        setUserName(userNameText);
-                    }}>Change UserName</button> */}
                 </div>
             </div>
 
