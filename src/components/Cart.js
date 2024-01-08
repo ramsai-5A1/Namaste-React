@@ -5,15 +5,6 @@ import {clearItems} from "../../utils/CartSlice";
 const Cart = () => {
 
     const cartItems = useSelector((store) => store.cart.items);
-
-    // if (cartItems.length === 0) {
-    //     return (
-    //         <div className="font-bold text-center">
-    //             <h1>Cart is empty</h1>
-    //         </div>
-    //     )
-    // }
-
     const dispatch = useDispatch();
 
     const handleClearCart = () => {
@@ -30,12 +21,6 @@ const Cart = () => {
 
                 {cartItems.length === 0 ? <h1>Cart is empty</h1> : <ItemList items={cartItems}/>}
                 
-                
-                {/* <div>
-                    {cartItems.map((item) => {
-                        return (<h1>{item.name} - ₹{item.min_price}/-</h1>)
-                    })}
-                </div> */}
             </div>
         </div>
     )

@@ -5,13 +5,20 @@ import { act } from "react-dom/test-utils";
 import { BrowserRouter } from "react-router-dom";
 import { dataFromMock } from "../mocks/RestraListMock";
 
-global.fetch = jest.fn(() => {
-    return Promise.resolve({
-        json: () => {
-            return Promise.resolve(dataFromMock);
-        }
+// global.fetch = jest.fn(() => {
+//     return Promise.resolve({
+//         json: () => {
+//             return Promise.resolve([]);
+//         }
+//     });
+// });
+
+// Todo: need to change this
+global.fetch = jest.fn(() => (
+    Promise.resolve({
+        json: () => Promise.resolve([])
     })
-});
+));
 
 describe("Body Component testing", () => {
     test("Should check for search  and filter funcionality", async () => {
