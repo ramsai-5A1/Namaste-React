@@ -49,6 +49,11 @@ describe("Body Component testing", () => {
         const inputBox = screen.getByTestId("searchInput");
         expect(inputBox).toBeInTheDocument();
 
+        const userNameBox = screen.getByTestId("username-box");
+        expect(userNameBox).toBeInTheDocument();
+
+        expect(userNameBox.value).toBe("Default User");
+
         //writing the value as pizza in input box
         fireEvent.change(inputBox, { target: { value: "Pizza" } });
 

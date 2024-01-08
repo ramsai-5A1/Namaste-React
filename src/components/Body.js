@@ -99,7 +99,7 @@ const Body = () => {
                     <button className="px-4 py-2 bg-black text-white hover:bg-gray-500 hover:text-black rounded-lg" onClick={handleTopRatedButton}>{buttonMessage}</button>
                 </div>
                 <div className="p-4 m-4">
-                    <input type="text" className="p-2 border border-black w-50 h-8" 
+                    <input type="text" data-testid="username-box" className="p-2 border border-black w-50 h-8" 
                         value={loggedInUser} 
                         onChange={(data) => {
                             setUserName(data.target.value)}}>
