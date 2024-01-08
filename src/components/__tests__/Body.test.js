@@ -14,7 +14,7 @@ global.fetch = jest.fn(() => {
 });
 
 describe("Body Component testing", () => {
-    test("Should check for search text", async () => {
+    test("Should check for search  and filter funcionality", async () => {
          await act(async () => render(
             <BrowserRouter>
                 <Body/>
@@ -69,4 +69,41 @@ describe("Body Component testing", () => {
         expect(cardsAfterClicking.length).toBe(23);
 
     });
+
+    test("Should check for filter functionality for another receipe", async () => {
+        await act(async () => render(
+            <BrowserRouter>
+                <Body/>
+            </BrowserRouter>
+        ));
+
+        const cardsBeforeSearching = screen.getAllByTestId("restraCard");
+        expect(cardsBeforeSearching.length).toBe(23);
+
+        const inputBox = screen.getByTestId("searchInput");
+        expect(inputBox).toBeInTheDocument();
+
+        const searchButton = screen.getByRole("button", { name: "Search" });
+        expect(searchButton).toBeInTheDocument();
+
+        fireEvent.change(inputBox, { target: { value: "Biryani" }});
+        fireEvent.click(searchButton);
+
+        const cardsAfterSearch = screen.getAllByTestId("restraCard");
+        expect(cardsAfterSearch.length).toBe(5);
+
+        const displayTopRatedButton = screen.getByRole("button", { name: "Display Top Rated Resturants" });
+        expect(displayTopRatedButton).toBeInTheDocument();
+
+        fireEvent.click(displayTopRatedButton);
+        const cardsAfterTopRatedButton = screen.getAllByTestId("restraCard");
+        expect(cardsAfterTopRatedButton.length).toBe(1);
+
+        const displayAllResturantsButton = screen.getByRole("button", { name: "Display all Resturants" });
+        expect(displayAllResturantsButton).toBeInTheDocument();
+        fireEvent.click(displayAllResturantsButton);
+
+        const cardsInFinalRender = screen.getAllByTestId("restraCard");
+        expect(cardsInFinalRender.length).toBe(23);
+    })
 });
