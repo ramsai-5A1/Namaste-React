@@ -1,5 +1,5 @@
 const Contactus = () => {
-    return <div className="mx-auto w-4/12 rounded-lg">
+    return <div className="mx-auto w-4/12 rounded-lg py-48">
         <h1 className="font-bold text-3xl p-4 m-4"> Contact us via whatsapp </h1>
         <form className="bg-gray-200 mx-auto">
             <div className="flex justify-between">   

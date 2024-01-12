@@ -26,7 +26,7 @@ const AppLayout = () => {
             // const data = await fetch("");
             // const info = await data.json;
             const info = {
-                userName: "Ram sai Manapuram"
+                userName: "Krishna Chaitanya"
             }
             setTimeout(() => {
                 setUserName(info.userName);

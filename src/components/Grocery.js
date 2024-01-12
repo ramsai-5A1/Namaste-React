@@ -1,7 +1,7 @@
 
 const Grocery = () => {
     return (
-        <div>
+        <div className="py-48">
             <h1>Our Grocery Online Store</h1>
         </div>
     )

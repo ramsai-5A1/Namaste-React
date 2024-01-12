@@ -72,7 +72,7 @@ const Body = () => {
     }
 
     return (
-        <div id={text} className="">
+        <div id={text} className="py-36">
             <div className="flex">
                 <div className="p-4 m-4">
                     <input data-testid="searchInput" type="text" className="p-2 border border-solid border-black"

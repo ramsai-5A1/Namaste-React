@@ -12,7 +12,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="">
+        <div className="py-56">
             <div className="text-center  m-2 p-2 border ">
                 <div className="flex justify-between w-6/12 mx-auto">
                     <h1 className="font-bold p-5 underline">Items in the cart are:</h1>

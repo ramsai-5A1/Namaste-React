@@ -9,7 +9,7 @@ const About = () => {
         }
     }, []);
 
-    return <div>
+    return <div className="py-48">
             <h1> About us page</h1>
             <UserClass 
                 name={"First"}

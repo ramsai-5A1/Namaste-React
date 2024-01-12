@@ -12,7 +12,7 @@ const ResturantMenu = () => {
 
     if (restInfo === null || restInfo === undefined || restInfo.length === 0) {
         return (
-            <div className="text-center font-bold">
+            <div className="text-center font-bold py-48">
                 <h1>Loading...</h1>
                 <Shimmer/>
             </div>
