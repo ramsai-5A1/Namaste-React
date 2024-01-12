@@ -42,7 +42,7 @@ export const ItemList = ({items}) => {
 
     const addItemToCart = (value) => {
         dispatch(addItem(value));
-        toast(value.item.name + " added to cart");
+        //toast(value.item.name + " added to cart");
          //const cartItems = useSelector(store => store.cart.items);
         // console.log(cartItems);
     }

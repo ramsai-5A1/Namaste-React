@@ -6,6 +6,7 @@ import useGetOnlineStatus from "../../utils/useGetOnlineStatus";
 import UserContext from "../../utils/UserContext";
 import { LOCAL_HOST_BACKEND_URL } from "../../utils/constants";
 import { dataFromMock } from "./mocks/RestraListMock";
+import MOCK_DATA from "../../utils/Mocks/MOCK_DATA_1.json"
 
 const buttonMessages = ["Display Top Rated Resturants", "Display all Resturants"];
 let dataArr = [];
@@ -25,8 +26,9 @@ const Body = () => {
 
     const fetchDataFromApi = async () => {
         try {
-            const rawData = await fetch(LOCAL_HOST_BACKEND_URL);
-            const json = await rawData.json();
+            // const rawData = await fetch(LOCAL_HOST_BACKEND_URL);
+            // const json = await rawData.json();
+            const json = MOCK_DATA;
             
             dataArr = [];
             json?.sections?.SECTION_SEARCH_RESULT.forEach((ele) => {

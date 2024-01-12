@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { SWIGGY_DATA_FETCH_API_URL, LOCAL_HOST_BACKEND_URL } from "./constants";
+import { LOCAL_HOST_BACKEND_URL } from "./constants";
+import MOCK_DATA from "./Mocks/MOCK_DATA_1.json"
 
 const useGetRestaurantsData = () => {
     const [data, setData] = useState([]);
@@ -10,8 +11,9 @@ const useGetRestaurantsData = () => {
 
     const fetchDataFromApi = async () => {
         try {
-            const rawData = await fetch(LOCAL_HOST_BACKEND_URL);
-            const json = await rawData.json();
+            // const rawData = await fetch(LOCAL_HOST_BACKEND_URL);
+            // const json = await rawData.json();
+            const json = MOCK_DATA;
             
             let dataArr = [];
             json?.sections?.SECTION_SEARCH_RESULT.forEach((ele) => {
